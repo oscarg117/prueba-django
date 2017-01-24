@@ -1,0 +1,15 @@
+{% autoescape on %}
+\documentclass{article}
+\begin{document}
+  \subsection{ {{ question.question_text }} }
+
+  Se presentan los resultados de la pregunta \emph{ {{ question.question_text }} }.
+
+  \begin{itemize}
+{% for choice in question.choice_set.all %}
+  \item {{ choice.choice_text }} $\rightarrow$ {{ choice.votes }} vote{{ choice.votes|pluralize }}
+{% endfor %}
+  \end{itemize}
+
+\end{document}
+{% endautoescape %}
